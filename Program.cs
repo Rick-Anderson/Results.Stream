@@ -16,7 +16,8 @@ app.MapGet("/", async (HttpContext http) =>
     http.Response.Headers.CacheControl = $"public,max-age={TimeSpan.FromHours(24).TotalSeconds}";
 
     return Results.Stream(stream => image.SaveAsync(stream, PngFormat.Instance), "image/png");
-    // when using is used in first line, ie using var image = await Image.LoadAsync("wwwroot/front.png");
+    // when using is used in first line, ie
+    // using var image = await Image.LoadAsync("wwwroot/front.png");
     // ObjectDisposedException: Cannot access a disposed object. Object name: 'Image`1'.
 });
 
