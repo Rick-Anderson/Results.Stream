@@ -5,8 +5,6 @@ using SixLabors.ImageSharp.Processing;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-//app.MapGet("/", () => "Hello World!");
-
 app.MapGet("/", async (HttpContext http) =>   // process-image
 {
     using var image = await Image.LoadAsync("wwwroot/front.png");
