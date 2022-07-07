@@ -12,6 +12,7 @@ app.MapGet("/", async (HttpContext http) =>   // process-image
     int height = image.Height / 2;
     image.Mutate(x => x.Resize(width, height));
     http.Response.Headers.CacheControl = $"public,max-age={TimeSpan.FromHours(24).TotalSeconds}";
+    // ObjectDisposedException: Cannot access a disposed object. Object name: 'Image`1'.
     return Results.Stream(stream => image.SaveAsync(stream, PngFormat.Instance), "image/png");
 });
 
